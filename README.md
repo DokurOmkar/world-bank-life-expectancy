@@ -38,7 +38,15 @@ Life expectancy is one of the most meaningful summary statistics for a country's
 ├── world_bank_analysis.ipynb   # Main analysis notebook (CRISP-DM)
 ├── world_bank_data.csv         # Raw World Bank Databank export (2000–2015)
 ├── README.md                   # This file
-└── blog_post.md                # Non-technical blog post summary
+├── blog_post.md                # Non-technical blog post summary
+├── fig_missingness.png         # Missingness heatmap for selected features
+├── fig_correlations.png        # Feature correlations with life expectancy
+├── fig_scatter_drivers.png     # GNI & child mortality scatter plots
+├── fig_gni_regions.png         # GNI per capita time series by region (2000–2015)
+├── fig_child_mortality.png     # Top 15 countries by child mortality improvement
+├── fig_model_performance.png   # Predicted vs actual + residual plot
+├── fig_feature_importance.png  # Gradient Boosting feature importances
+└── fig_scenarios.png           # Life expectancy under income scenarios
 ```
 
 ---
