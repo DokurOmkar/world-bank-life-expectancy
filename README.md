@@ -94,6 +94,14 @@ jupyter notebook world_bank_analysis.ipynb
 
 ---
 
+## Blog Post
+
+[What Determines How Long You'll Live? The Data Tells a Clear Story](https://github.com/DokurOmkar/world-bank-life-expectancy/blob/main/blog_post.md)
+
+A non-technical summary of the findings written for a general audience.
+
+---
+
 ## Data Source
 
 World Bank Databank — **World Development Indicators**
