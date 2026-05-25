@@ -2,7 +2,7 @@
 
 *A data-driven look at 217 countries, 15 years, and the factors that predict life expectancy*
 
-![Feature Correlations with Life Expectancy](fig_correlations.png)
+![People of the world](cover_image.jpg)
 
 ---
 
