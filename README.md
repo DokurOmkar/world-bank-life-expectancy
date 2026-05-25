@@ -6,7 +6,7 @@ A data science project following the **CRISP-DM** process to explore economic an
 
 ## Motivation
 
-Life expectancy is one of the most meaningful summary statistics for a country's development. By understanding which economic and social factors predict it and to what degree policymakers can prioritize where to invest. This project uses the World Bank Databank data to answer five concrete questions about global development trends.
+Life expectancy is one of the most meaningful summary statistics for a country's development. By understanding which economic and social factors predict it — and to what degree — policymakers can prioritize where to invest. This project uses World Bank Databank data to answer five concrete questions about global development trends.
 
 ---
 
@@ -24,11 +24,11 @@ Life expectancy is one of the most meaningful summary statistics for a country's
 
 | Question | Key Finding |
 |----------|-------------|
-| Strongest correlates | Under-5 mortality rate (−0.93) and GNI per capita (+0.83) dominate |
-| Regional GNI trends | East Asia & Pacific showed the steepest income growth; Sub-Saharan Africa the lowest but growing |
-| Child mortality heroes | Ethiopia, Niger, Mali, Chad led absolute drops in under-5 deaths over 2000–2015 |
-| Model accuracy | Gradient Boosting: Test R² = 0.912, MAE = 1.81 years — explains 91% of variance |
-| Income scenario | Doubling GNI per capita in a median LMIC adds ~2–4 predicted life years; reaching high-income levels adds 10+ |
+| Strongest correlates | Under-5 mortality rate (−0.89) and GNI per capita (+0.80) are the dominant predictors. Fertility rate (−0.82) and adolescent fertility (−0.78) also show strong negative correlations. |
+| Regional GNI trends | Europe & Central Asia and North America led throughout. East Asia & Pacific showed the steepest growth. Sub-Saharan Africa remained lowest but grew modestly. |
+| Child mortality champions | Rwanda led with a drop of 137 per 1,000 live births (74% reduction). Malawi, Angola, Liberia, and Niger followed — all in Sub-Saharan Africa. |
+| Model accuracy | Gradient Boosting: Test R² = 0.912, MAE = 1.81 years — explains 91.2% of variance in life expectancy across 44 test countries. |
+| Income scenario | Doubling GNI per capita alone adds only +0.4 predicted years. Moving to high-income levels ($40k GNI) adds ~10+ years — confirming that health investments matter far more than income alone. |
 
 ---
 
@@ -38,14 +38,7 @@ Life expectancy is one of the most meaningful summary statistics for a country's
 ├── world_bank_analysis.ipynb   # Main analysis notebook (CRISP-DM)
 ├── world_bank_data.csv         # Raw World Bank Databank export (2000–2015)
 ├── README.md                   # This file
-├── fig_missingness.png         # Missingness heatmap
-├── fig_correlations.png        # Feature–target correlations
-├── fig_scatter_drivers.png     # GNI & mortality scatter plots
-├── fig_gni_regions.png         # GNI per capita time series by region
-├── fig_child_mortality.png     # Top 15 child mortality improvements
-├── fig_model_performance.png   # Predicted vs actual + residuals
-├── fig_feature_importance.png  # Gradient Boosting feature importances
-└── fig_scenarios.png           # Income scenario predictions
+└── blog_post.md                # Non-technical blog post summary
 ```
 
 ---
@@ -77,17 +70,33 @@ jupyter notebook world_bank_analysis.ipynb
 
 ---
 
+## Key Model Results
+
+| Model | CV R² | Test R² | MAE | RMSE |
+|-------|-------|---------|-----|------|
+| Ridge Regression | 0.845 ± 0.063 | 0.881 | 2.08 yrs | 2.85 yrs |
+| Random Forest | 0.839 ± 0.044 | 0.906 | 1.93 yrs | 2.53 yrs |
+| **Gradient Boosting** | **0.857 ± 0.034** | **0.912** | **1.81 yrs** | **2.44 yrs** |
+
+**Note on metrics:** This is a regression task predicting a continuous variable (years). R², MAE, and RMSE are the regression equivalents of accuracy, recall, and F1 used in classification models.
+
+- **R²** — fraction of variance explained (1.0 = perfect)
+- **MAE** — average absolute error in years; model is typically within 1.81 years
+- **RMSE** — penalizes large errors more heavily than MAE
+
+---
+
 ## Data Source
 
-World Bank Databank — **World Development Indicators**  
-Downloaded from: https://databank.worldbank.org  
-Coverage: 217 countries, 51 indicators, years 2000–2015  
+World Bank Databank — **World Development Indicators**
+Downloaded from: https://databank.worldbank.org
+Coverage: 217 countries, 51 indicators, years 2000–2015
 Last updated: February 2026
 
 ---
 
 ## Acknowledgements
 
-- [World Bank Open Data](https://data.worldbank.org/) for providing freely available development indicators
-- [Udacity Data Science Nanodegree](https://www.udacity.com/course/data-scientist-nanodegree--nd025) for project structure guidance
+- [World Bank Open Data](https://data.worldbank.org/) for freely available development indicators
+- [Udacity Data Science Nanodegree](https://www.udacity.com/course/data-scientist-nanodegree--nd025) for project structure and guidance
 - CRISP-DM methodology for the analysis framework
